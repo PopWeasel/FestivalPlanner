@@ -18,6 +18,7 @@ from django.contrib import admin
 from Indietracks import views
 
 urlpatterns = [
-    url(r'^$', views.homepage, name='home')
+    url(r'^$', views.homepage, name='home'),
+    url(r'^performers/', views.performers, name='performers')
     #url(r'^admin/', admin.site.urls),
 ]

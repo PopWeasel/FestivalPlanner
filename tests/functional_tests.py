@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 import unittest
 
 class StartupTest(unittest.TestCase):
@@ -10,10 +11,27 @@ class StartupTest(unittest.TestCase):
     def tearDown(self):
         self.browser.quit()
 
-    def test_startPage(self):
-        self.browser.get("http://localhost:8000")
-        self.assertIn('Festival Planner', self.browser.title)
-        self.fail('Finish the test!')
+    def testCreatePerformer(self):
+        self.browser.get("http://localhost:8000/performers")
+        self.assertIn('Performers', self.browser.title)
+
+        performerNameInput = self.browser.find_element_by_id('performerName')
+        self.assertEqual(
+            performerNameInput.get_attribute('placeholder'),
+            'Enter name'
+        )
+
+        performerNameInput.send_keys("The Lucksmiths")
+        performerNameInput.send_keys(Keys.ENTER)
+
+        performerTable = self.browser.find_element_by_id('performerTable')
+        rows = performerTable.find_elements_by_tag_name('tr')
+        self.assertTrue(
+            any(row.text == 'The Lucksmiths' for row in rows)
+        )
+        self.fail("Write more tests")
+
+
 
 if __name__ == '__main__':
     unittest.main(warnings='ignore')

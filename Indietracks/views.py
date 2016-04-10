@@ -4,4 +4,7 @@ from django.http import HttpResponse
 
 # Create your views here.
 def homepage(request):
-    return HttpResponse("<html><title>Festival Planner</title></html>")
+    return render(request, 'home.html')
+
+def performers(request):
+    return render(request, 'performers.html')
