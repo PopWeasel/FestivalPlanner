@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from Indietracks import views
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^$', views.homepage, name='home')
+    #url(r'^admin/', admin.site.urls),
 ]
