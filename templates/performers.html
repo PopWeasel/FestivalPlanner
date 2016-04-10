@@ -4,14 +4,17 @@
     </head>
     <body>
         <h2>Add performer</h2>
-        <form action="addPerformer" id="addPerformer">
-            <input type="test" id="performerName" placeholder="Enter name">
-            <input type="test" id="performerDescription" placeholder="Enter description">
-            <input type="test" id="performerImage" placeholder="Add image">
+        <form id="addPerformer" method="post">
+            <input type="text" id="performerName" name="performerName" placeholder="Enter name">
+            <!-- <input type="test" id="performerDescription" placeholder="Enter description">
+            <input type="test" id="performerImage" placeholder="Add image"> -->
+            {% csrf_token %}
         </form>
 
         <table id="performerTable">
-
+            <tr>
+                <td>{{ performerName }}</td>
+            </tr>
         </table>
     </body>
 

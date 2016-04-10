@@ -21,14 +21,13 @@ class StartupTest(unittest.TestCase):
             'Enter name'
         )
 
-        performerNameInput.send_keys("The Lucksmiths")
+        performerName = "The Lucksmiths"
+        performerNameInput.send_keys(performerName)
         performerNameInput.send_keys(Keys.ENTER)
 
         performerTable = self.browser.find_element_by_id('performerTable')
         rows = performerTable.find_elements_by_tag_name('tr')
-        self.assertTrue(
-            any(row.text == 'The Lucksmiths' for row in rows)
-        )
+        self.assertIn(performerName, [row.text for row in rows])
         self.fail("Write more tests")
 
 
